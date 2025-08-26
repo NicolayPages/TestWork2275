@@ -1,5 +1,6 @@
 'use client';
 import { config } from '@/constants/config';
+import { useAuth } from '@/hooks/useAuth';
 import { useAuthStore } from '@/store/authStore';
 import { Button } from '@/ui/components';
 import Link from 'next/link';
@@ -7,8 +8,9 @@ import { useRouter } from 'next/navigation';
 import styles from './header.module.scss';
 
 export const Header = () => {
-  const { user, logout } = useAuthStore();
+  const logout = useAuthStore(store => store.logout);
   const router = useRouter();
+  const { isAuth, user } = useAuth();
 
   const onLogout = () => {
     logout();
@@ -20,12 +22,19 @@ export const Header = () => {
       <div className={styles.header_container}>
         <h1 className={styles.header_logo}>{config.title}</h1>
         <div className={styles.header_content}>
-          {!!user ? (
-            <Button onClick={onLogout} variant='secondary'>
-              Logout {user.username}
-            </Button>
+          {isAuth ? (
+            <>
+              <p>
+                {user?.firstName} {user?.lastName}
+              </p>
+              <Button onClick={onLogout} variant='secondary'>
+                Logout
+              </Button>
+            </>
           ) : (
-            <Link href={'/login'}>Login</Link>
+            <Link className={styles.header_link} href={'/login'}>
+              Login
+            </Link>
           )}
         </div>
       </div>

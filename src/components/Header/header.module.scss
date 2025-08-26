@@ -1,9 +1,9 @@
 .header {
    background: $dark-bg-color;
    &_container {
-      padding: $padding-vertical $padding-horizontal;
+      padding: 0 $padding-horizontal;
       color: $white-color;
-      min-height: $footer-height;
+      height: $footer-height;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -13,6 +13,17 @@
    
    }
    &_content {
-
+      display: flex;
+      align-items: center;
+      gap: $gap;
+      p {
+         white-space: nowrap;
+      }
+   }
+   &_link {
+      font-size: $default-font-size;
+      color: $white-color;
+      font-weight: 600;
+      padding-right: $padding-horizontal;
    }
 }

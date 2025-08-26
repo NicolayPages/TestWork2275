@@ -36,7 +36,7 @@
  .secondary {
    background-color: $mist-color;
    color: $dark-color;
- 
+   height: $ui-small-height;
    &:hover:not(:disabled) {
      background-color: $light-mist-color;
    }
