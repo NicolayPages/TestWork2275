@@ -5,6 +5,7 @@ import { config } from '@/constants/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import '@/styles/globals.scss';
+import { AuthInitializer } from '@/components/AuthInitializer';
 
 const fontRoboto = Roboto({
   subsets: ['cyrillic'],
@@ -30,6 +31,7 @@ export default function RootLayout({ children }: Readonly<IRoot>) {
           <Header />
           <main className={styles.container}>{children}</main>
           <Footer />
+          <AuthInitializer />
         </div>
       </body>
     </html>

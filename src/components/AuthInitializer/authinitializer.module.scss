@@ -1,0 +1,23 @@
+.global_loading {
+   position: fixed;
+   background-color: $mist-color;
+   display: flex;
+   inset: 0;
+   align-items: center;
+   justify-content: center;
+   z-index: $max-z-index;
+ }
+ 
+ .spinner {
+   width: $ui-element-height;
+   height: $ui-element-height;
+   border: 4px solid $milk-color;
+   border-top: 4px solid $dark-bg-color;
+   border-radius: 50%;
+   animation: spin 1s linear infinite;
+ }
+ 
+ @keyframes spin {
+   0% { transform: rotate(0deg); }
+   100% { transform: rotate(360deg); }
+ }

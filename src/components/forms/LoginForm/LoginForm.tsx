@@ -1,6 +1,7 @@
 'use client';
 
 import { errors } from '@/constants/erorrs';
+import { useAuthStore } from '@/store/authStore';
 import { IAuth } from '@/types/model';
 import { Button, Input } from '@/ui/components';
 import { ChangeEvent, useState } from 'react';
@@ -16,6 +17,7 @@ const getIsValid = (value: string) => {
 };
 
 export const LoginForm = () => {
+  const { login, error, loading } = useAuthStore();
   const [form, setForm] = useState<IAuth>(initialValue);
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
@@ -26,6 +28,10 @@ export const LoginForm = () => {
   const isValidUsername = getIsValid(form.username);
   const isValidPassword = getIsValid(form.password);
   const isDisabled = !isValidUsername || !isValidPassword;
+
+  const onLoginHandler = async () => {
+    await login({ ...form, expiresInMins: 1 });
+  };
 
   return (
     <div className={styles.form}>
@@ -48,7 +54,11 @@ export const LoginForm = () => {
           error={errors.validate}
           type='password'
         />
-        <Button disabled={isDisabled}>Login</Button>
+        <Button disabled={isDisabled} onClick={onLoginHandler}>
+          Login
+        </Button>
+        {!!error && <div>{error}</div>}
+        {!!loading && <div>Загрузка...</div>}
       </div>
     </div>
   );
