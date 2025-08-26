@@ -58,7 +58,7 @@ export const useAuthStore = create<IAuthStore>()(
       checkAuth: async () => {
         const token = authService.getAccessToken();
         if (!token) {
-          set({ user: null, token: null });
+          set({ user: null, token: null, initialized: true });
           return;
         }
 
