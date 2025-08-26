@@ -6,8 +6,12 @@
    align-items: center;
    &_container {
       padding: $padding-vertical $padding-horizontal;
+      display: flex;
+      justify-content: center;
+      align-items: center;
    }
    &_info {
       color: $white-color;
+      text-align: center;
    }
 }
