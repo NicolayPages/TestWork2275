@@ -1,0 +1,1 @@
+export type { IAuthRequest } from './IAuthRequest';

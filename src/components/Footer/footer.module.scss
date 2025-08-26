@@ -1,0 +1,13 @@
+.footer {
+   background: $dark-bg-color;
+   min-height: $footer-height;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   &_container {
+      padding: $padding-vertical $padding-horizontal;
+   }
+   &_info {
+      color: $white-color;
+   }
+}

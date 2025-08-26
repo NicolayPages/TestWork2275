@@ -1,9 +1,10 @@
+import { LoginForm } from '@/components/forms';
 import styles from './page.module.scss';
 
-export default function Home() {
+export default function Login() {
   return (
     <div className={styles.page}>
-      <main className={styles.main}>Главная</main>
+      <LoginForm />
     </div>
   );
 }

@@ -1,0 +1,18 @@
+.header {
+   background: $dark-bg-color;
+   &_container {
+      padding: $padding-vertical $padding-horizontal;
+      color: $white-color;
+      min-height: $footer-height;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: $gap;
+   }
+   &_logo {
+   
+   }
+   &_content {
+
+   }
+}

@@ -1,0 +1,17 @@
+.form {
+   display: flex;
+   flex-direction: column;
+   gap: $gap;
+   max-width: 500px;
+   flex: 1 1 auto;
+   &_title {
+      font-size: $extra-font-size;
+      font-weight: 700;
+      text-align: center;
+   }
+   &_container {
+      display: flex;
+      flex-direction: column;
+      gap: $gap-small;
+   }
+}

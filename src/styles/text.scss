@@ -1,0 +1,21 @@
+@import 'variables';
+
+h1 {
+  font-weight: 700;
+  font-size: $big-font-size;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+}
+h2 {
+  font-weight: 400;
+  font-size: $default-font-size;
+  line-height: 24px;
+  letter-spacing: 0.3px;
+}
+
+p {
+  font-weight: 400;
+  font-size: $normal-font-size;
+  line-height: 20px;
+  letter-spacing: 0.48px;
+}

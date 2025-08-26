@@ -1,0 +1,58 @@
+.wrapper {
+   width: 100%;
+
+   &_input {
+      width: 100%;
+      height: $ui-element-height;
+      font-size: $default-font-size;
+      font-weight: 400;
+      color: $dark-color;
+      border-radius: $border-radius;
+      border: 1px solid $deep-mist-color;
+      background-color: $white-color;
+      padding: $padding-vertical $padding-horizontal;
+      transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        background-color 0.2s ease;
+    
+      &:focus {
+        border-color: $black-color;
+        box-shadow: 0 0 0 2px $deep-blue-color;
+      }
+    
+      &:hover:not(:disabled) {
+        background-color: $light-mist-color;
+      }
+    
+      &:disabled {
+        background-color: $light-gray-color;
+        color: $gray-color;
+        cursor: not-allowed;
+      }
+    
+      &::placeholder {
+        color: $gray-color;
+      }
+    }
+ }
+
+ .error {
+   border-color: $red-color;
+   background-color: $white-color;
+ 
+   &:focus {
+     box-shadow: 0 0 0 2px $deep-red-color;
+   }
+ 
+   &:hover {
+     background-color: $white-color;
+   }
+   &_info {
+      color: $red-color;
+      font-size: $small-font-size;
+      margin-top: 4px;
+      margin-left: 4px;
+      font-weight: 400;
+    }   
+ }

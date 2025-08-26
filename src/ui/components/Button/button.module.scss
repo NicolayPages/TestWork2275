@@ -1,0 +1,43 @@
+.button {
+  width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: $ui-element-height;
+   padding: $padding-vertical $padding-horizontal-ui;
+   font-size: $default-font-size;
+   font-weight: 600;
+   border-radius: $border-radius;
+   transition:
+     background-color 0.3s ease,
+     color 0.3s ease,
+     transform 0.1s ease,
+     box-shadow 0.1s ease;
+ 
+   &:active:not(:disabled) {
+     transform: translateY(2px);
+     box-shadow: 0 2px 4px $black-color;
+   }
+   &:disabled {
+    cursor: not-allowed;
+    opacity: 0.8;
+   }
+ }
+ 
+ .primary {
+   background-color: $deep-dark-color;
+   color: $white-color;
+ 
+   &:hover:not(:disabled) {
+     background-color: $dark-color;
+   }
+ }
+ 
+ .secondary {
+   background-color: $mist-color;
+   color: $dark-color;
+ 
+   &:hover:not(:disabled) {
+     background-color: $light-mist-color;
+   }
+ }
