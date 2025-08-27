@@ -3,7 +3,7 @@ import { times } from '@/constants/times';
 
 import { IUser } from '@/types/model';
 import { IAuthRequest } from '@/types/request';
-import { IAuthResponse, IRefreshResponse } from '@/types/response';
+import { TAuthResponse, IRefreshResponse } from '@/types/response';
 
 import { api } from './api/axiosInstanse';
 
@@ -12,7 +12,7 @@ const AUTH_URL = '/auth';
 const maxAge = 30 * times.secInDay;
 
 export const authService = {
-  async login(credentials: IAuthRequest): Promise<IAuthResponse> {
+  async login(credentials: IAuthRequest): Promise<TAuthResponse> {
     const response = await api.post(`${AUTH_URL}/login`, credentials);
     return response.data;
   },
