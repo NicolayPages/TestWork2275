@@ -3,14 +3,16 @@
    &_container {
       padding: 0 $padding-horizontal;
       color: $white-color;
-      height: $footer-height;
+      height: $header-height;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: $gap;
    }
    &_logo {
-   
+      @media (max-width: $mobile-breakpoint) {
+         font-size: $default-font-size;
+      }
    }
    &_content {
       display: flex;

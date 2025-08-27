@@ -12,7 +12,7 @@ export const Footer = () => {
       <div className={styles.footer_container}>
         <p className={styles.footer_info}>
           {isAuth
-            ? `${currentYear} Logged as ${user?.username} ${user?.email}`
+            ? `${currentYear} Logged as ${user?.username} \n ${user?.email}`
             : currentYear}
         </p>
       </div>
