@@ -4,7 +4,7 @@ import { ChangeEvent, useState } from 'react';
 
 import { useRouter } from 'next/navigation';
 
-import { errors } from '@/constants/erorrs';
+import { errors } from '@/constants/errors';
 import { routes } from '@/constants/routes';
 
 import { useAuthStore } from '@/store/authStore';
@@ -13,7 +13,7 @@ import { IAuth } from '@/types/model';
 
 import { Button, Input } from '@/ui/components';
 
-import { getIsValid } from '@/utils/getIsValid';
+import { getIsValid } from '@/utils/getters/getIsValid';
 
 import styles from './loginform.module.scss';
 

@@ -3,7 +3,7 @@ import { NextResponse } from 'next/server';
 
 import { routes } from './constants/routes';
 import { storageKeys } from './constants/storageKeys';
-import { getHrefArr } from './utils/getHrefArr';
+import { getHrefArr } from './utils/getters/getHrefArr';
 
 const publicRoutes: string[] = getHrefArr(routes, 'public');
 const protectedRoutes: string[] = getHrefArr(routes, 'private');

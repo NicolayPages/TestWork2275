@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { errors } from '@/constants/erorrs';
+import { errors } from '@/constants/errors';
 
 import { IProduct } from '@/types/model';
 import { IProductsResponse } from '@/types/response';
@@ -9,17 +9,19 @@ import { api } from './api/axiosInstanse';
 
 const PRODUCTS_URL = '/products';
 
-export const fetchProducts = async (limit: number): Promise<IProduct[]> => {
-  try {
-    const response = await api.get<IProductsResponse>(PRODUCTS_URL, {
-      params: { limit },
-    });
-    return response.data.products;
-  } catch (error) {
-    if (axios.isAxiosError(error)) {
-      const message = error.response?.data?.message || error.message;
-      throw new Error(message);
+export const productService = {
+  async getProducts(limit: number): Promise<IProduct[]> {
+    try {
+      const response = await api.get<IProductsResponse>(PRODUCTS_URL, {
+        params: { limit },
+      });
+      return response.data.products;
+    } catch (error) {
+      if (axios.isAxiosError(error)) {
+        const message = error.response?.data?.message || error.message;
+        throw new Error(message);
+      }
+      throw new Error(errors.response);
     }
-    throw new Error(errors.response);
-  }
+  },
 };

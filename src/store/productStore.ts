@@ -3,7 +3,9 @@ import { create } from 'zustand';
 import { ICatchError } from '@/types/model';
 import { IProductStore } from '@/types/store';
 
-import { fetchProducts } from '../services/productService';
+import { productService } from '../services/productService';
+
+const { getProducts } = productService;
 
 export const useProductStore = create<IProductStore>((set, get) => ({
   products: [],
@@ -16,7 +18,7 @@ export const useProductStore = create<IProductStore>((set, get) => ({
     set({ loading: true, error: null });
 
     try {
-      const products = await fetchProducts(limit);
+      const products = await getProducts(limit);
       set({ products, loading: false });
     } catch (err: unknown) {
       set({ error: (err as ICatchError).message, loading: false });

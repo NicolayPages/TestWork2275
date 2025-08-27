@@ -1,114 +1,98 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
 
-import { errors } from '@/constants/erorrs';
 import { errorCodes } from '@/constants/errorCodes';
-import { storageKeys } from '@/constants/storageKeys';
+import { errors } from '@/constants/errors';
 
 import { ICatchError } from '@/types/model';
 import { IAuthStore } from '@/types/store';
 
+import { authUtils } from '@/utils/auth/authUtils';
+
 import { authService } from '../services/authService';
 
-export const useAuthStore = create<IAuthStore>()(
-  persist(
-    (set, get) => ({
-      user: null,
-      token: null,
-      loading: false,
-      error: null,
-      initialized: false,
+const { getAccessToken, clearTokens, setTokens } = authUtils;
 
-      login: async credentials => {
-        set({ loading: true, error: null });
+const { getCurrentUser, login, refreshTokens } = authService;
+
+export const useAuthStore = create<IAuthStore>()((set, get) => ({
+  user: null,
+  token: null,
+  loading: false,
+  error: null,
+  initialized: false,
+
+  login: async credentials => {
+    set({ loading: true, error: null });
+    try {
+      const authResponse = await login(credentials);
+      setTokens(authResponse.accessToken, authResponse.refreshToken);
+      await get().fetchCurrentUser();
+    } catch (err: unknown) {
+      set({
+        error: (err as ICatchError).response?.data?.message || errors.login,
+      });
+      throw err;
+    } finally {
+      set({ loading: false });
+    }
+  },
+
+  fetchCurrentUser: async () => {
+    try {
+      const user = await getCurrentUser();
+      set({ user });
+    } catch (err: unknown) {
+      set({
+        error: (err as ICatchError).response?.data?.message || errors.response,
+      });
+      clearTokens();
+      set({ user: null });
+    }
+  },
+
+  logout: () => {
+    clearTokens();
+    set({ user: null });
+  },
+
+  checkAuth: async () => {
+    const token = getAccessToken();
+    if (!token) {
+      set({ user: null, initialized: true });
+      return;
+    }
+
+    set({ loading: true, error: null });
+
+    try {
+      const user = await getCurrentUser();
+      set({ user });
+    } catch (err: unknown) {
+      if ((err as ICatchError).response?.status === errorCodes.unauthorized) {
         try {
-          const authResponse = await authService.login(credentials);
-          authService.setTokens(
-            authResponse.accessToken,
-            authResponse.refreshToken,
-          );
-          set({ token: authResponse.accessToken });
-          await get().fetchCurrentUser();
-        } catch (err: unknown) {
-          set({
-            error: (err as ICatchError).response?.data?.message || errors.login,
-          });
-          throw err;
-        } finally {
-          set({ loading: false });
-        }
-      },
-
-      fetchCurrentUser: async () => {
-        try {
-          const user = await authService.getCurrentUser();
-          set({ user });
-        } catch (err: unknown) {
-          set({
-            error:
-              (err as ICatchError).response?.data?.message || errors.response,
-          });
-          authService.clearTokens();
-          set({ user: null, token: null });
-        }
-      },
-
-      logout: () => {
-        authService.clearTokens();
-        set({ user: null, token: null });
-      },
-
-      checkAuth: async () => {
-        const token = authService.getAccessToken();
-        if (!token) {
-          set({ user: null, token: null, initialized: true });
-          return;
-        }
-
-        set({ loading: true, error: null });
-
-        try {
-          const user = await authService.getCurrentUser();
-          set({ user, token });
-        } catch (err: unknown) {
-          if (
-            (err as ICatchError).response?.status === errorCodes.unauthorized
-          ) {
-            try {
-              const { accessToken, refreshToken } =
-                await authService.refreshTokens();
-              authService.setTokens(accessToken, refreshToken);
-              const updatedUser = await authService.getCurrentUser();
-              set({ user: updatedUser, token: accessToken });
-            } catch (_) {
-              authService.clearTokens();
-              set({ user: null, token: null });
-            }
-          } else {
-            set({ error: (err as ICatchError).message });
-          }
-        } finally {
-          set({ loading: false, initialized: true });
-        }
-      },
-
-      refreshTokens: async () => {
-        try {
-          const { accessToken, refreshToken } =
-            await authService.refreshTokens();
-          authService.setTokens(accessToken, refreshToken);
-          set({ token: accessToken });
+          const { accessToken, refreshToken } = await refreshTokens();
+          setTokens(accessToken, refreshToken);
+          const updatedUser = await getCurrentUser();
+          set({ user: updatedUser });
         } catch (_) {
-          authService.clearTokens();
-          set({ user: null, token: null });
+          clearTokens();
+          set({ user: null });
         }
-      },
-    }),
-    {
-      name: storageKeys.auth,
-      partialize: state => ({
-        token: state.token,
-      }),
-    },
-  ),
-);
+      } else {
+        set({ error: (err as ICatchError).message });
+      }
+    } finally {
+      set({ loading: false, initialized: true });
+    }
+  },
+
+  refreshTokens: async () => {
+    try {
+      const { accessToken, refreshToken } = await refreshTokens();
+      setTokens(accessToken, refreshToken);
+    } catch (_) {
+      clearTokens();
+      set({ user: null });
+    }
+  },
+}));

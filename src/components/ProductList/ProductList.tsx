@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo } from 'react';
 
-import { errors } from '@/constants/erorrs';
+import { errors } from '@/constants/errors';
 
 import { useAuth } from '@/hooks/useAuth';
 

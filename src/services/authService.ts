@@ -1,15 +1,12 @@
-import { storageKeys } from '@/constants/storageKeys';
-import { times } from '@/constants/times';
-
 import { IUser } from '@/types/model';
 import { IAuthRequest } from '@/types/request';
 import { IRefreshResponse, TAuthResponse } from '@/types/response';
 
+import { authUtils } from '@/utils/auth/authUtils';
+
 import { api } from './api/axiosInstanse';
 
 const AUTH_URL = '/auth';
-
-const maxAge = 30 * times.secInDay;
 
 export const authService = {
   async login(credentials: IAuthRequest): Promise<TAuthResponse> {
@@ -18,38 +15,14 @@ export const authService = {
   },
 
   async getCurrentUser(): Promise<IUser> {
-    const response = await api.get(`${AUTH_URL}/me`, {
-      headers: {
-        Authorization: `Bearer ${this.getAccessToken()}`,
-      },
-    });
+    const response = await api.get(`${AUTH_URL}/me`);
     return response.data;
   },
 
   async refreshTokens(): Promise<IRefreshResponse> {
     const response = await api.post(`${AUTH_URL}/refresh`, {
-      refreshToken: this.getRefreshToken(),
+      refreshToken: authUtils.getRefreshToken(),
     });
     return response.data;
-  },
-
-  getAccessToken(): string | null {
-    return localStorage.getItem(storageKeys.accessToken);
-  },
-
-  getRefreshToken(): string | null {
-    return localStorage.getItem(storageKeys.refreshToken);
-  },
-
-  setTokens(accessToken: string, refreshToken: string): void {
-    localStorage.setItem(storageKeys.accessToken, accessToken);
-    localStorage.setItem(storageKeys.refreshToken, refreshToken);
-    document.cookie = `${storageKeys.accessToken}=${accessToken}; path=/; max-age=${maxAge}; SameSite=Lax`;
-  },
-
-  clearTokens(): void {
-    localStorage.removeItem(storageKeys.accessToken);
-    localStorage.removeItem(storageKeys.refreshToken);
-    document.cookie = `${storageKeys.accessToken}=; path=/; max-age=0`;
   },
 };

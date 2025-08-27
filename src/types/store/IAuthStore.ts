@@ -3,7 +3,6 @@ import { IAuthRequest } from '../request';
 
 export interface IAuthStore {
   user: IUser | null;
-  token: string | null;
   loading: boolean;
   error: string | null;
   initialized: boolean;
