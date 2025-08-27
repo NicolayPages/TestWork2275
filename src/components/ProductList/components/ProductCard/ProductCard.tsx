@@ -2,7 +2,7 @@ import { IProduct } from '@/types/model';
 import { FC, memo } from 'react';
 import Image from 'next/image';
 import styles from './productcard.module.scss';
-import { Button } from '../Button';
+import { Button } from '@/ui/components';
 
 interface Props {
   product: IProduct;
@@ -17,8 +17,8 @@ export const ProductCard: FC<Props> = memo(({ product, isAuth }) => {
         <Image
           src={thumbnail}
           alt={title}
-          width={500}
-          height={180}
+          width={600}
+          height={230}
           className={styles.card_image}
           priority={false}
         />

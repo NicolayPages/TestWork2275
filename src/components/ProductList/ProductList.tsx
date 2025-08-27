@@ -3,8 +3,9 @@
 import { errors } from '@/constants/erorrs';
 import { useAuth } from '@/hooks/useAuth';
 import { useProductStore } from '@/store/productStore';
-import { Loading, ProductCard } from '@/ui/components';
+import { Loading } from '@/ui/components';
 import { useEffect, useMemo } from 'react';
+import { ProductCard } from './components/ProductCard';
 import styles from './productlist.module.scss';
 
 export const ProductList = () => {
