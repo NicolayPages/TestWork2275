@@ -4,9 +4,11 @@ import { IProductsResponse } from '@/types/response';
 import axios from 'axios';
 import { api } from './api/axiosInstanse';
 
+const PRODUCTS_URL = '/products';
+
 export const fetchProducts = async (limit: number): Promise<IProduct[]> => {
   try {
-    const response = await api.get<IProductsResponse>('/products', {
+    const response = await api.get<IProductsResponse>(PRODUCTS_URL, {
       params: { limit },
     });
     return response.data.products;

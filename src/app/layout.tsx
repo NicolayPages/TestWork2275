@@ -4,7 +4,7 @@ import styles from './layout.module.scss';
 import { config } from '@/constants/config';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import '@/styles/globals.scss';
+import '@/ui/styles/globals.scss';
 import { AuthInitializer } from '@/components/AuthInitializer';
 
 const fontRoboto = Roboto({

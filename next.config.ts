@@ -2,7 +2,7 @@ import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   sassOptions: {
-    additionalData: `@import "@/styles/variables.scss";`,
+    additionalData: `@import "@/ui/styles/variables.scss";`,
   },
   images: {
     remotePatterns: [
