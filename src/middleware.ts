@@ -1,5 +1,6 @@
-import { NextRequest, NextFetchEvent } from 'next/server';
+import { NextFetchEvent, NextRequest } from 'next/server';
 import { NextResponse } from 'next/server';
+
 import { routes } from './constants/routes';
 import { storageKeys } from './constants/storageKeys';
 import { getHrefArr } from './utils/getHrefArr';

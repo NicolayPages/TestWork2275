@@ -1,11 +1,15 @@
 import type { Metadata } from 'next';
 import { Roboto } from 'next/font/google';
-import styles from './layout.module.scss';
-import { config } from '@/constants/config';
-import { Header } from '@/components/Header';
-import { Footer } from '@/components/Footer';
-import '@/ui/styles/globals.scss';
+
 import { AuthInitializer } from '@/components/AuthInitializer';
+import { Footer } from '@/components/Footer';
+import { Header } from '@/components/Header';
+
+import { config } from '@/constants/config';
+
+import '@/ui/styles/globals.scss';
+
+import styles from './layout.module.scss';
 
 const fontRoboto = Roboto({
   subsets: ['cyrillic'],

@@ -1,7 +1,10 @@
+import axios from 'axios';
+
 import { errors } from '@/constants/erorrs';
+
 import { IProduct } from '@/types/model';
 import { IProductsResponse } from '@/types/response';
-import axios from 'axios';
+
 import { api } from './api/axiosInstanse';
 
 const PRODUCTS_URL = '/products';

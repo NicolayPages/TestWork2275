@@ -1,6 +1,7 @@
 'use client';
 
 import { FC, ReactNode } from 'react';
+
 import { Loading } from '../Loading';
 import styles from './button.module.scss';
 

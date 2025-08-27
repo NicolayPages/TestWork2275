@@ -1,8 +1,12 @@
-import { IProduct } from '@/types/model';
 import { FC, memo } from 'react';
+
 import Image from 'next/image';
-import styles from './productcard.module.scss';
+
+import { IProduct } from '@/types/model';
+
 import { Button } from '@/ui/components';
+
+import styles from './productcard.module.scss';
 
 interface Props {
   product: IProduct;

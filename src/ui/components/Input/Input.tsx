@@ -1,6 +1,7 @@
 'use client';
 
 import { ChangeEvent, FC, useCallback, useState } from 'react';
+
 import styles from './input.module.scss';
 
 interface Props {

@@ -1,3 +1,3 @@
 export const errorCodes = {
-   unauthorized: 401,
-} as const
+  unauthorized: 401,
+} as const;

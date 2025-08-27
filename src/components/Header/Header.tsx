@@ -1,11 +1,17 @@
 'use client';
-import { config } from '@/constants/config';
-import { routes } from '@/constants/routes';
-import { useAuth } from '@/hooks/useAuth';
-import { useAuthStore } from '@/store/authStore';
-import { Button } from '@/ui/components';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+
+import { config } from '@/constants/config';
+import { routes } from '@/constants/routes';
+
+import { useAuth } from '@/hooks/useAuth';
+
+import { useAuthStore } from '@/store/authStore';
+
+import { Button } from '@/ui/components';
+
 import styles from './header.module.scss';
 
 export const Header = () => {

@@ -1,46 +1,39 @@
-$bg-gray-color: #F7F7F7;
+$bg-gray-color: #f7f7f7;
 $dark-bg-color: #1a1a1a;
 $white-color: #fff;
 $dark-color: #333;
 $deep-dark-color: #1a1a1a;
-$black-color: rgba(0, 0, 0, 0.2);
+$black-color: rgb(0 0 0 / 20%);
 $mist-color: #e0e0e0;
 $light-mist-color: #f0f0f0;
 $deep-mist-color: #ccc;
-$deep-blue-color: rgba(0, 112, 243, 0.2);
+$deep-blue-color: rgb(0 112 243 / 20%);
 $gray-color: #999;
 $light-gray-color: #eee;
 $red-color: #ca2a30;
-$deep-red-color: rgba(202, 42, 48, 0.2);
+$deep-red-color: rgb(202 42 48 / 20%);
 $milk-color: #f3f3f3;
-
 $header-height: 60px;
 $footer-height: 50px;
 $ui-element-height: 48px;
 $ui-small-height: 34px;
 $ui-extra-small-height: 20px;
-
 $padding-horizontal: 15px;
 $padding-horizontal-ui: 24px;
 $padding-vertical: 10px;
 $padding-small: 5px;
 $padding-vertical-page: 25px;
-
-$gap: 20px; 
-$gap-small: 15px; 
+$gap: 20px;
+$gap-small: 15px;
 $gap-extra-small: 10px;
-$gap-mini: 7px;  
-
+$gap-mini: 7px;
 $border-radius: 8px;
-
 $extra-font-size: 24px;
 $big-font-size: 18px;
 $default-font-size: 16px;
 $normal-font-size: 14px;
-$small-font-size:  12px;
-
+$small-font-size: 12px;
 $max-z-index: 9999;
-
 $mobile-breakpoint: 425px;
 $middle-mobile-breakpoint: 500px;
 $big-mobile-breakpoint: 768px;

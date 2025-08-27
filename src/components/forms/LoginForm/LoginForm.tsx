@@ -1,13 +1,20 @@
 'use client';
 
+import { ChangeEvent, useState } from 'react';
+
+import { useRouter } from 'next/navigation';
+
 import { errors } from '@/constants/erorrs';
 import { routes } from '@/constants/routes';
+
 import { useAuthStore } from '@/store/authStore';
+
 import { IAuth } from '@/types/model';
+
 import { Button, Input } from '@/ui/components';
+
 import { getIsValid } from '@/utils/getIsValid';
-import { useRouter } from 'next/navigation';
-import { ChangeEvent, useState } from 'react';
+
 import styles from './loginform.module.scss';
 
 const initialValue: IAuth = {

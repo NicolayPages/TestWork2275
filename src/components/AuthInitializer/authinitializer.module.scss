@@ -1,9 +1,9 @@
 .global_loading {
-   position: fixed;
-   background-color: $bg-gray-color;
-   display: flex;
-   inset: 0;
-   align-items: center;
-   justify-content: center;
-   z-index: $max-z-index;
- }
+  position: fixed;
+  background-color: $bg-gray-color;
+  display: flex;
+  inset: 0;
+  align-items: center;
+  justify-content: center;
+  z-index: $max-z-index;
+}

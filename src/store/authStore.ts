@@ -1,10 +1,13 @@
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
+
 import { errors } from '@/constants/erorrs';
 import { errorCodes } from '@/constants/errorCodes';
 import { storageKeys } from '@/constants/storageKeys';
+
 import { ICatchError } from '@/types/model';
 import { IAuthStore } from '@/types/store';
-import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
+
 import { authService } from '../services/authService';
 
 export const useAuthStore = create<IAuthStore>()(

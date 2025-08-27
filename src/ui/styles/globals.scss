@@ -20,10 +20,11 @@ body {
   color: $dark-color;
 }
 
-button, input {
+button,
+input {
   font-family: var(--font-roboto);
   background: none;
-  
+
   &:hover {
     cursor: pointer;
   }
@@ -41,6 +42,5 @@ li {
 
 a {
   text-decoration: none;
-  transition: color .2s ease-in-out;
+  transition: color 0.2s ease-in-out;
 }
-

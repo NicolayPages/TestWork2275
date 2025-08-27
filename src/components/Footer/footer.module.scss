@@ -1,18 +1,20 @@
 .footer {
-   background: $dark-bg-color;
-   min-height: $footer-height;
-   display: flex;
-   justify-content: center;
-   align-items: center;
-   &_container {
-      padding: $padding-vertical $padding-horizontal;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-   }
-   &_info {
-      color: $white-color;
-      white-space: pre-wrap;
-      text-align: center;
-   }
+  background: $dark-bg-color;
+  min-height: $footer-height;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &_container {
+    padding: $padding-vertical $padding-horizontal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &_info {
+    color: $white-color;
+    white-space: pre-wrap;
+    text-align: center;
+  }
 }

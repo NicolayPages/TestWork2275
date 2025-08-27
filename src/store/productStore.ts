@@ -1,7 +1,8 @@
-import { IProductStore } from '@/types/store';
 import { create } from 'zustand';
-import { fetchProducts } from '../services/productService';
 
+import { IProductStore } from '@/types/store';
+
+import { fetchProducts } from '../services/productService';
 
 export const useProductStore = create<IProductStore>((set, get) => ({
   products: [],

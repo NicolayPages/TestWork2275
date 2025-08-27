@@ -1,8 +1,11 @@
 'use client';
 
-import { useAuthStore } from '@/store/authStore';
-import { Loading } from '@/ui/components';
 import { useEffect } from 'react';
+
+import { useAuthStore } from '@/store/authStore';
+
+import { Loading } from '@/ui/components';
+
 import styles from './authinitializer.module.scss';
 
 export const AuthInitializer = () => {

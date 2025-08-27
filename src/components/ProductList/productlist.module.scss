@@ -1,25 +1,28 @@
 .error {
-   color: $red-color;
-   font-size: $default-font-size;
+  color: $red-color;
+  font-size: $default-font-size;
 }
 
 .notfound {
-   font-size: $default-font-size;
-   font-weight: 500;
+  font-size: $default-font-size;
+  font-weight: 500;
 }
 
 .products {
-   width: 100%;
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $gap;
+
   @media (max-width: $laptop-breakpoint) {
-   grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
+
   @media (max-width: $big-mobile-breakpoint) {
-   grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
+
   @media (max-width: $middle-mobile-breakpoint) {
-   grid-template-columns: repeat(1, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 }

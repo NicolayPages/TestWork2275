@@ -1,6 +1,7 @@
 'use client';
 
 import { useAuth } from '@/hooks/useAuth';
+
 import styles from './footer.module.scss';
 
 const currentYear = new Date().getFullYear();
