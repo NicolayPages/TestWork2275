@@ -50,16 +50,6 @@ export const authService = {
   clearTokens(): void {
     localStorage.removeItem(storageKeys.accessToken);
     localStorage.removeItem(storageKeys.refreshToken);
-    localStorage.removeItem(storageKeys.user);
     document.cookie = `${storageKeys.accessToken}=; path=/; max-age=0`;
-  },
-
-  setUser(user: IUser): void {
-    localStorage.setItem(storageKeys.user, JSON.stringify(user));
-  },
-
-  getUser(): IUser | null {
-    const userStr = localStorage.getItem(storageKeys.user);
-    return userStr ? JSON.parse(userStr) : null;
   },
 };

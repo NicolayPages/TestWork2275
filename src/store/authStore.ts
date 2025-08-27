@@ -42,7 +42,6 @@ export const useAuthStore = create<IAuthStore>()(
       fetchCurrentUser: async () => {
         try {
           const user = await authService.getCurrentUser();
-          authService.setUser(user);
           set({ user });
         } catch (err: unknown) {
           set({
@@ -70,7 +69,6 @@ export const useAuthStore = create<IAuthStore>()(
 
         try {
           const user = await authService.getCurrentUser();
-          authService.setUser(user);
           set({ user, token });
         } catch (err: unknown) {
           if (
@@ -81,7 +79,6 @@ export const useAuthStore = create<IAuthStore>()(
                 await authService.refreshTokens();
               authService.setTokens(accessToken, refreshToken);
               const updatedUser = await authService.getCurrentUser();
-              authService.setUser(updatedUser);
               set({ user: updatedUser, token: accessToken });
             } catch (_) {
               authService.clearTokens();
@@ -110,7 +107,6 @@ export const useAuthStore = create<IAuthStore>()(
     {
       name: storageKeys.auth,
       partialize: state => ({
-        user: state.user,
         token: state.token,
       }),
     },
