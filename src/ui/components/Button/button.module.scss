@@ -15,14 +15,14 @@
     transform 0.1s ease,
     box-shadow 0.1s ease;
 
-  &:active:not(:disabled) {
-    transform: translateY(2px);
-    box-shadow: 0 2px 4px $black-color;
-  }
-
   &:disabled {
     cursor: not-allowed;
     opacity: 0.8;
+  }
+
+  &:active:not(:disabled) {
+    transform: translateY(2px);
+    box-shadow: 0 2px 4px $black-color;
   }
 }
 

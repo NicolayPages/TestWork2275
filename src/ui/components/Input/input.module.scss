@@ -21,14 +21,14 @@
       box-shadow: 0 0 0 2px $deep-blue-color;
     }
 
-    &:hover:not(:disabled) {
-      background-color: $light-mist-color;
-    }
-
     &:disabled {
       background-color: $light-gray-color;
       color: $gray-color;
       cursor: not-allowed;
+    }
+
+    &:hover:not(:disabled) {
+      background-color: $light-mist-color;
     }
 
     &::placeholder {

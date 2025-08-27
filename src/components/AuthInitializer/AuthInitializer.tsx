@@ -20,7 +20,7 @@ export const AuthInitializer = () => {
 
   if (!initialized) {
     return (
-      <div className={styles.global_loading}>
+      <div className={styles.loading}>
         <Loading />
       </div>
     );
