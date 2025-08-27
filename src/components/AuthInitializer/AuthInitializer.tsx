@@ -1,7 +1,8 @@
 'use client';
 
-import { useEffect } from 'react';
 import { useAuthStore } from '@/store/authStore';
+import { Loading } from '@/ui/components';
+import { useEffect } from 'react';
 import styles from './authinitializer.module.scss';
 
 export const AuthInitializer = () => {
@@ -17,7 +18,7 @@ export const AuthInitializer = () => {
   if (!initialized) {
     return (
       <div className={styles.global_loading}>
-        <div className={styles.spinner}></div>
+        <Loading />
       </div>
     );
   }
