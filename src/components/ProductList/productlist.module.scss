@@ -1,0 +1,21 @@
+.error {
+   color: $red-color;
+   font-size: $default-font-size;
+}
+
+.notfound {
+   font-size: $default-font-size;
+   font-weight: 500;
+}
+
+.products {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $gap;
+  @media (max-width: $big-mobile-breakpoint) {
+   grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: $middle-mobile-breakpoint) {
+   grid-template-columns: repeat(1, 1fr);
+  }
+}

@@ -28,7 +28,8 @@ $padding-vertical-page: 25px;
 
 $gap: 20px; 
 $gap-small: 15px; 
-$gap-extra-small: 10px; 
+$gap-extra-small: 10px;
+$gap-mini: 7px;  
 
 $border-radius: 8px;
 
@@ -41,3 +42,5 @@ $small-font-size:  12px;
 $max-z-index: 9999;
 
 $mobile-breakpoint: 425px;
+$middle-mobile-breakpoint: 500px;
+$big-mobile-breakpoint: 768px;

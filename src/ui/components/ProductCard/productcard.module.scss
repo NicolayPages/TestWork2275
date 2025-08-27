@@ -1,0 +1,58 @@
+
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background: $white-color;
+  border-radius: $border-radius;
+  overflow: hidden;
+  box-shadow: 0 4px 12px $black-color;
+  border: 1px solid $light-mist-color;
+  &_image_wrapper {
+   position: relative;
+   width: 100%;
+   height: 180px;
+   background-color: $milk-color;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   overflow: hidden;
+ }
+ &_image {
+   position: absolute; 
+   width: 100%;
+   height: 100%;
+   object-fit: cover;
+   transition: transform 0.4s ease;
+ 
+   .card:hover & {
+     transform: scale(1.05);
+   }
+ }
+ &_content {
+   padding: $padding-horizontal;
+   display: flex;
+   flex-direction: column;
+   gap: $gap-small;
+   justify-content: space-between;
+   flex: 1 1 auto;
+ }
+ &_info {
+   display: flex;
+   flex-direction: column;
+   gap: $gap-mini;
+   flex: 1 1 auto;
+ }
+ &_title {
+   color: $dark-color;
+ }
+ &_category {
+   color: $gray-color;
+   text-transform: capitalize;
+ }
+ &_price {
+   color: $dark-color;
+   font-weight: 600;
+   font-size: $default-font-size;
+ }
+}
