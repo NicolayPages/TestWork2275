@@ -3,7 +3,7 @@ import { times } from '@/constants/times';
 
 import { IUser } from '@/types/model';
 import { IAuthRequest } from '@/types/request';
-import { TAuthResponse, IRefreshResponse } from '@/types/response';
+import { IRefreshResponse, TAuthResponse } from '@/types/response';
 
 import { api } from './api/axiosInstanse';
 
