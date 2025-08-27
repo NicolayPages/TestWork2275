@@ -27,16 +27,11 @@ export const LoginForm = () => {
 
   const isValidUsername = getIsValid(form.username);
   const isValidPassword = getIsValid(form.password);
-  const isDisabled = !isValidUsername || !isValidPassword;
+  const isDisabled = !isValidUsername || !isValidPassword || loading;
 
   const onLoginHandler = async () => {
-    await login({ ...form, expiresInMins: 1 })
-      .then(() => {
-        router.replace(routes.public.main.href);
-      })
-      .catch(() => {
-        setForm(prev => ({ ...prev, password: initialValue.password }));
-      });
+    await login(form);
+    router.replace(routes.public.main.href);
   };
 
   return (
@@ -50,6 +45,7 @@ export const LoginForm = () => {
           onChange={onChange}
           isError={!isValidUsername}
           error={errors.validate}
+          disabled={loading}
         />
         <Input
           name='password'
@@ -59,12 +55,16 @@ export const LoginForm = () => {
           isError={!isValidPassword}
           error={errors.validate}
           type='password'
+          disabled={loading}
         />
-        <Button disabled={isDisabled} onClick={onLoginHandler}>
+        <Button
+          loading={loading}
+          disabled={isDisabled}
+          onClick={onLoginHandler}
+        >
           Login
         </Button>
         {!!error && <p className={styles.form_error}>{error}</p>}
-        {!!loading && <div>Загрузка...</div>}
       </div>
     </div>
   );
