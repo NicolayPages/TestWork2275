@@ -5,6 +5,7 @@ import { routes } from '@/constants/routes';
 import { useAuthStore } from '@/store/authStore';
 import { IAuth } from '@/types/model';
 import { Button, Input } from '@/ui/components';
+import { getIsValid } from '@/utils/getIsValid';
 import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 import styles from './loginform.module.scss';
@@ -12,10 +13,6 @@ import styles from './loginform.module.scss';
 const initialValue: IAuth = {
   username: '',
   password: '',
-};
-
-const getIsValid = (value: string) => {
-  return !!value.trim() && value.length >= 3;
 };
 
 export const LoginForm = () => {
@@ -33,8 +30,13 @@ export const LoginForm = () => {
   const isDisabled = !isValidUsername || !isValidPassword;
 
   const onLoginHandler = async () => {
-    await login({ ...form, expiresInMins: 1 });
-    router.replace(routes.public.main.href);
+    await login({ ...form, expiresInMins: 1 })
+      .then(() => {
+        router.replace(routes.public.main.href);
+      })
+      .catch(() => {
+        setForm(prev => ({ ...prev, password: initialValue.password }));
+      });
   };
 
   return (
@@ -61,7 +63,7 @@ export const LoginForm = () => {
         <Button disabled={isDisabled} onClick={onLoginHandler}>
           Login
         </Button>
-        {!!error && <div>{error}</div>}
+        {!!error && <p className={styles.form_error}>{error}</p>}
         {!!loading && <div>Загрузка...</div>}
       </div>
     </div>
