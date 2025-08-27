@@ -83,7 +83,7 @@ export const useAuthStore = create<IAuthStore>()(
               const updatedUser = await authService.getCurrentUser();
               authService.setUser(updatedUser);
               set({ user: updatedUser, token: accessToken });
-            } catch (refreshErr) {
+            } catch (_) {
               authService.clearTokens();
               set({ user: null, token: null });
             }
@@ -101,7 +101,7 @@ export const useAuthStore = create<IAuthStore>()(
             await authService.refreshTokens();
           authService.setTokens(accessToken, refreshToken);
           set({ token: accessToken });
-        } catch (err) {
+        } catch (_) {
           authService.clearTokens();
           set({ user: null, token: null });
         }

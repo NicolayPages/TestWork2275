@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC } from 'react';
 
 import Image from 'next/image';
 
@@ -13,7 +13,7 @@ interface Props {
   isAuth: boolean;
 }
 
-export const ProductCard: FC<Props> = memo(({ product, isAuth }) => {
+export const ProductCard: FC<Props> = ({ product, isAuth }) => {
   const { title, category, price, thumbnail } = product;
   return (
     <div className={styles.card}>
@@ -37,4 +37,4 @@ export const ProductCard: FC<Props> = memo(({ product, isAuth }) => {
       </div>
     </div>
   );
-});
+};
