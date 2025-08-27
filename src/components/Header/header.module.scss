@@ -1,9 +1,9 @@
 .header {
    background: $dark-bg-color;
    &_container {
-      padding: 0 $padding-horizontal;
+      padding: $padding-small $padding-horizontal;
       color: $white-color;
-      height: $header-height;
+      min-height: $header-height;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -20,6 +20,11 @@
       gap: $gap;
       p {
          white-space: nowrap;
+      }
+      @media (max-width: $mobile-breakpoint) {
+         flex-wrap: wrap;
+         gap: 5px;
+         justify-content: center;
       }
    }
    &_link {
