@@ -1,5 +1,6 @@
 'use client';
 import { config } from '@/constants/config';
+import { routes } from '@/constants/routes';
 import { useAuth } from '@/hooks/useAuth';
 import { useAuthStore } from '@/store/authStore';
 import { Button } from '@/ui/components';
@@ -14,7 +15,7 @@ export const Header = () => {
 
   const onLogout = () => {
     logout();
-    router.push('/');
+    router.replace(routes.public.main.href);
   };
 
   return (
@@ -32,7 +33,10 @@ export const Header = () => {
               </Button>
             </>
           ) : (
-            <Link className={styles.header_link} href={'/login'}>
+            <Link
+              className={styles.header_link}
+              href={routes.public.login.href}
+            >
               Login
             </Link>
           )}

@@ -1,9 +1,11 @@
 'use client';
 
 import { errors } from '@/constants/erorrs';
+import { routes } from '@/constants/routes';
 import { useAuthStore } from '@/store/authStore';
 import { IAuth } from '@/types/model';
 import { Button, Input } from '@/ui/components';
+import { useRouter } from 'next/navigation';
 import { ChangeEvent, useState } from 'react';
 import styles from './loginform.module.scss';
 
@@ -19,6 +21,7 @@ const getIsValid = (value: string) => {
 export const LoginForm = () => {
   const { login, error, loading } = useAuthStore();
   const [form, setForm] = useState<IAuth>(initialValue);
+  const router = useRouter();
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { name, value } = event.target;
@@ -31,6 +34,7 @@ export const LoginForm = () => {
 
   const onLoginHandler = async () => {
     await login({ ...form, expiresInMins: 1 });
+    router.replace(routes.public.main.href);
   };
 
   return (

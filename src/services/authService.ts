@@ -1,10 +1,13 @@
 import { storageKeys } from '@/constants/storageKeys';
+import { times } from '@/constants/times';
 import { IUser } from '@/types/model';
 import { IAuthRequest } from '@/types/request';
 import { IAuthResponse, IRefreshResponse } from '@/types/response';
 import { api } from './api/axiosInstanse';
 
 const AUTH_URL = '/auth';
+
+const maxAge = 30 * times.secInDay;
 
 export const authService = {
   async login(credentials: IAuthRequest): Promise<IAuthResponse> {
@@ -39,12 +42,14 @@ export const authService = {
   setTokens(accessToken: string, refreshToken: string): void {
     localStorage.setItem(storageKeys.accessToken, accessToken);
     localStorage.setItem(storageKeys.refreshToken, refreshToken);
+    document.cookie = `${storageKeys.accessToken}=${accessToken}; path=/; max-age=${maxAge}; SameSite=Lax`;
   },
 
   clearTokens(): void {
     localStorage.removeItem(storageKeys.accessToken);
     localStorage.removeItem(storageKeys.refreshToken);
     localStorage.removeItem(storageKeys.user);
+    document.cookie = `${storageKeys.accessToken}=; path=/; max-age=0`;
   },
 
   setUser(user: IUser): void {

@@ -30,6 +30,7 @@ export const useAuthStore = create<IAuthStore>()(
           set({
             error: (err as ICatchError).response?.data?.message || errors.login,
           });
+          throw err;
         } finally {
           set({ loading: false });
         }
