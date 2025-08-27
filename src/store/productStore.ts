@@ -1,5 +1,6 @@
 import { create } from 'zustand';
 
+import { ICatchError } from '@/types/model';
 import { IProductStore } from '@/types/store';
 
 import { fetchProducts } from '../services/productService';
@@ -17,8 +18,8 @@ export const useProductStore = create<IProductStore>((set, get) => ({
     try {
       const products = await fetchProducts(limit);
       set({ products, loading: false });
-    } catch (err: any) {
-      set({ error: err.message, loading: false });
+    } catch (err: unknown) {
+      set({ error: (err as ICatchError).message, loading: false });
     }
   },
   setLimit: limit => {
